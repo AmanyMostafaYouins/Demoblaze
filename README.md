@@ -2,6 +2,7 @@ Demoblaze Automation Testing Project
 Project Overview
 This project involves automating test cases for the Demoblaze website using Java, Selenium, TestNG, and Cucumber (BDD) frameworks. The goal is to validate various functionalities, including user signup, product purchasing, and cart operations, ensuring the system behaves as expected.
 
+
 Test Scenarios
 Scenario 1: Verify that User Can Sign Up Successfully
 Objective: Ensure that the user can sign up without errors.
@@ -10,8 +11,10 @@ Test Steps:
     2) Fill in the username and password in the signup form.
     3) Click on the Sign Up button.
 Expected Result: A success message should be displayed: "Sign up successful."
+
+
 Scenario 2: Verify that Two Products Are Purchased Successfully
-  Step 1: Log In
+Step 1: Log In
 Objective: Verify that the user can log in successfully.
 Test Steps:
     1) Click on the Log in button in the Header.
@@ -52,6 +55,10 @@ Test Steps:
    3)  Fill in Name, Country, City, Credit Card Number, Month, and Year.
    4) Click on the Purchase button.
 Expected Result: A success message should be displayed: "Thank you for your purchase!"
+
+
+
+
 Negative Scenarios
 Test Case 1: Try signing up with an existing username and verify the error message.
 Test Case 2: Attempt to purchase with an expired credit card and verify the error message.
