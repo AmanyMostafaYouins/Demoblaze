@@ -1,0 +1,10 @@
+org\example\pages\P01_SignUp.class
+org\example\stepDefs\TC03_InvalidLoginStepDefs.class
+org\example\pages\P04_ValidateCart.class
+org\example\testRunner\runners.class
+org\example\stepDefs\TC02_PurchaseProductsStepDefs.class
+org\example\stepDefs\Hooks.class
+org\example\stepDefs\TC01_SignUpStepDefs.class
+org\example\pages\P03_AddProductsToCart.class
+org\example\pages\P05_PlaceOrder.class
+org\example\pages\P02_Login.class

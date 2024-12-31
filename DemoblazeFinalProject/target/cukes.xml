@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="238.869" tests="5" skipped="0" failures="1" errors="0">
+<testcase classname="User Sign Up" name="Verify that User Can Sign Up Successfully" time="23.145">
+<system-out><![CDATA[
+Given user is on the signup page............................................passed
+When user fills in the username and password in the signup form.............passed
+And user clicks on the Sign Up button.......................................passed
+Then user should see a success message "Sign up successful."................passed
+]]></system-out>
+</testcase>
+<testcase classname="User Sign Up" name="Try signing up with an existing username" time="17.912">
+<system-out><![CDATA[
+Given user is on the signup page............................................passed
+When user enters an existing username "existingUser " and a password "password123".passed
+And user clicks on the Sign Up button.......................................passed
+Then user should see an error message "This user already exist."............passed
+]]></system-out>
+</testcase>
+<testcase classname="Verify that Two Products Are Purchased Successfully" name="User purchases two products" time="90.087">
+<system-out><![CDATA[
+Given user is on the homepage of website....................................passed
+When user login with valid credentials......................................passed
+Then user should be logged in successfully..................................passed
+When user adds the first product to the cart................................passed
+Then the first product should be added to the cart..........................passed
+When user adds the second product to the cart...............................passed
+Then the second product should be added to the cart.........................passed
+When user validates the cart................................................passed
+Then both products should be visible in the cart............................passed
+Then the total amount should be calculated correctly........................passed
+When user clicks on the Place order button..................................passed
+Then the total amount showed on the place order should be calculated correctly.passed
+When user fills in the purchase details.....................................passed
+And user clicks on the Purchase button......................................passed
+Then user should see a success message......................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Verify that Two Products Are Purchased Successfully" name="Attempt to purchase with an expired credit card" time="89.337">
+<failure type="java.lang.NullPointerException">
+<![CDATA[java.lang.NullPointerException
+	at org.example.pages.P05_PlaceOrder.ShowErrorMsg(P05_PlaceOrder.java:113)
+	at org.example.stepDefs.TC02_PurchaseProductsStepDefs.user_should_see_an_error_message_indicating_the_credit_card_is_expired(TC02_PurchaseProductsStepDefs.java:198)
+	at ✽.user should see an error message indicating the credit card is expired(file:///C:/Users/Eng.Amany/IdeaProjects/DemoblazeFinalProject/src/main/resources/features/F02_PurchaseProducts.feature:35)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on the homepage of website....................................passed
+When user login with valid credentials......................................passed
+Then user should be logged in successfully..................................passed
+When user adds the first product to the cart................................passed
+Then the first product should be added to the cart..........................passed
+When user adds the second product to the cart...............................passed
+Then the second product should be added to the cart.........................passed
+When user validates the cart................................................passed
+Then both products should be visible in the cart............................passed
+Then the total amount should be calculated correctly........................passed
+When user clicks on the Place order button..................................passed
+Then the total amount showed on the place order should be calculated correctly.passed
+And user enters an expired credit card number...............................passed
+And user clicks on the Purchase button......................................passed
+Then user should see an error message indicating the credit card is expired.failed
+]]></system-out>
+</testcase>
+<testcase classname="User Login" name="Attempt to log in with incorrect credentials" time="17.784">
+<system-out><![CDATA[
+Given user is on the login page.............................................passed
+When user enters an incorrect username "wrongUser " and an incorrect password "wrongPassword".passed
+And user clicks on the login button.........................................passed
+Then user should see an error messages "User does not exist."...............passed
+]]></system-out>
+</testcase>
+</testsuite>
