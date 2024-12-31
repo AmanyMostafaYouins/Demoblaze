@@ -161,17 +161,17 @@ public class TC02_PurchaseProductsStepDefs {
     }
 
     @When("user fills in the purchase details")
-    public void user_fills_in_the_purchase_details() {
+    public void userFillsInThePurchaseDetails() {
         placeOrderActions.UserFillSInThePurchaseDetails();
     }
 
     @And("user clicks on the Purchase button")
-    public void user_clicks_on_the_purchase_button() {
+    public void userClicksOnThePurchaseButton() {
          successMsg1=placeOrderActions.userClicksOnThePurchaseButton();
     }
 
     @Then("user should see a success message")
-    public void user_should_see_a_success_message() {
+    public void userSeeAsuccessMessage() {
         String alertText =successMsg1;
         try {
             softAssert.assertEquals(alertText,"Thank you for your purchase!");
@@ -186,17 +186,16 @@ public class TC02_PurchaseProductsStepDefs {
 
 
     @And("user enters an expired credit card number")
-    public void user_enters_an_expired_credit_card_number()
+    public void userEntersAnexpiredCreditCardNumber()
     {
           placeOrderActions.UserFillSExpiredThePurchaseDetails();
     }
 
     @Then("user should see an error message indicating the credit card is expired")
-    public void user_should_see_an_error_message_indicating_the_credit_card_is_expired()
+    public void userSeeErrorMessageCreditCardIsExpired()
     {
         String expectedMessage = "Your credit card has expired.";
         String actualMessage=placeOrderActions.ShowErrorMsg();
-
         try {
             softAssert.assertEquals( actualMessage.contains(expectedMessage),expectedMessage,"please enter non expired credit card");
         }
