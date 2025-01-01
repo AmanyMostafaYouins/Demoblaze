@@ -24,6 +24,7 @@ public class P04_ValidateCart {
         driver = testDriver;
     }
     //actions
+    //click On The Cart Button In The Header
     public void clickOnTheCartButtonInTheHeader() {
         // Sleep for a few seconds to wait for the page to appear
         try {
@@ -53,6 +54,7 @@ public class P04_ValidateCart {
         }
     }
 
+    //get Total Products In Cart
     public int getTotalProductsInCart()
     {
         int rowCount = driver.findElements(rowsCount).size();
