@@ -34,3 +34,12 @@ Feature: Verify that Two Products Are Purchased Successfully
     And user clicks on the Purchase button
     Then user should see an error message indicating the credit card is expired
 
+Scenario: Add the same product twice to the cart
+    Given user is on the homepage of website
+    When user login with valid credentials
+    Then user should be logged in successfully
+    When user adds the first product to the cart
+    Then the first product should be added to the cart
+    When user adds the first product to the cart again
+    Then the first product should be added to the cart
+    And the total number of products in the cart should be 1 and product updated quantity
