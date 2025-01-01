@@ -18,7 +18,7 @@ public class TC02_PurchaseProductsStepDefs {
     P02_Login loginActions = new P02_Login(driver);
     P03_AddProductsToCart addProductsActions = new P03_AddProductsToCart(driver);
     P04_ValidateCart validateCartActions = new P04_ValidateCart(driver);
-    P05_PlaceOrder placeOrderActions=new P05_PlaceOrder(driver);
+    P05_PlaceOrder placeOrderActions = new P05_PlaceOrder(driver);
     double expectedTotal;
     double price1;
     double price2;
@@ -34,15 +34,15 @@ public class TC02_PurchaseProductsStepDefs {
     @When("user login with valid credentials")
     public void userLoginWithValidCredentials() {
         loginActions.clickLoginLink();
-        loginActions.fillUserNameAndPasswordInLoginForm("mmm","mmm");
+        loginActions.fillUserNameAndPasswordInLoginForm("mmm", "mmm");
         loginActions.clickLoginSSubmitButton();
     }
+
     @Then("user should be logged in successfully")
     public void userShouldBeLoggedSuccessfully() {
         try {
             softAssert.assertTrue(loginActions.checkUserNameIsShowed().isDisplayed()); // Check if the user name is displayed
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Call assertAll to check for assertion failures
@@ -53,7 +53,7 @@ public class TC02_PurchaseProductsStepDefs {
     @When("user adds the first product to the cart")
     public void userAddsTheFirstProductToTheCart() {
         addProductsActions.ClicksOnLaptopsCategories();
-        price1=addProductsActions.clicksOnFirstProduct();
+        price1 = addProductsActions.clicksOnFirstProduct();
         successMsg = addProductsActions.clicksOnAddToCartButton();
     }
 
@@ -62,19 +62,19 @@ public class TC02_PurchaseProductsStepDefs {
         System.out.println(successMsg);
         try {
             softAssert.assertEquals(successMsg, "Product added.", "Confirmation message is not as expected");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Call assertAll to check for assertion failures
             softAssert.assertAll();
         }
     }
+
     @When("user adds the second product to the cart")
     public void userAddsTheSecondProductToTheCart() {
         driver.get("https://demoblaze.com/");// Go back to the laptops page
         addProductsActions.ClicksOnLaptopsCategories();
-        price2=addProductsActions.clicksOnSecondProduct();
+        price2 = addProductsActions.clicksOnSecondProduct();
         successMsg = addProductsActions.clicksOnAddToCartButton();
     }
 
@@ -84,8 +84,7 @@ public class TC02_PurchaseProductsStepDefs {
         System.out.println(successMsg);
         try {
             softAssert.assertEquals(successMsg, "Product added.", "Confirmation message is not as expected");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Call assertAll to check for assertion failures
@@ -109,8 +108,8 @@ public class TC02_PurchaseProductsStepDefs {
         }
         try {
             softAssert.assertTrue(driver.getPageSource().contains("2017 Dell 15.6 Inch"));
-            softAssert.assertTrue(driver.getPageSource().contains("Dell i7 8gb"));        }
-        catch (Exception e) {
+            softAssert.assertTrue(driver.getPageSource().contains("Dell i7 8gb"));
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Call assertAll to check for assertion failures
@@ -119,24 +118,22 @@ public class TC02_PurchaseProductsStepDefs {
     }
 
     @Then("the total amount should be calculated correctly")
-    public void verifyTheTotalAmountCalculation()
-         {
-             expectedTotal = price1 + price2;
-             System.out.println(expectedTotal);
+    public void verifyTheTotalAmountCalculation() {
+        expectedTotal = price1 + price2;
+        System.out.println(expectedTotal);
 
-             double actualTotal = validateCartActions.getTotalCartPrice();
-             System.out.println(actualTotal);
-             // Verify the total amount
-             try {
-                 softAssert.assertEquals(actualTotal,expectedTotal, "The total amount should be calculated correctly");
-             }
-             catch (Exception e) {
-                 e.printStackTrace();
-             } finally {
-                 // Call assertAll to check for assertion failures
-                 softAssert.assertAll();
-             }
-         }
+        double actualTotal = validateCartActions.getTotalCartPrice();
+        System.out.println(actualTotal);
+        // Verify the total amount
+        try {
+            softAssert.assertEquals(actualTotal, expectedTotal, "The total amount should be calculated correctly");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Call assertAll to check for assertion failures
+            softAssert.assertAll();
+        }
+    }
 
     @When("user clicks on the Place order button")
     public void userClicksOnThePlaceOrderButton() {
@@ -150,9 +147,8 @@ public class TC02_PurchaseProductsStepDefs {
         double actualTotals = placeOrderActions.theTotalAmountShouldBeCalculatedCorrectlyOnPlaceOrder();
         // Verify the total amount
         try {
-            softAssert.assertEquals(actualTotals,expectedTotal, "The total amount should be calculated correctly");
-        }
-        catch (Exception e) {
+            softAssert.assertEquals(actualTotals, expectedTotal, "The total amount should be calculated correctly");
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Call assertAll to check for assertion failures
@@ -167,16 +163,15 @@ public class TC02_PurchaseProductsStepDefs {
 
     @And("user clicks on the Purchase button")
     public void userClicksOnThePurchaseButton() {
-         successMsg1=placeOrderActions.userClicksOnThePurchaseButton();
+        successMsg1 = placeOrderActions.userClicksOnThePurchaseButton();
     }
 
     @Then("user should see a success message")
-    public void userSeeAsuccessMessage() {
-        String alertText =successMsg1;
+    public void userSeeSuccessMessage() {
+        String alertText = successMsg1;
         try {
-            softAssert.assertEquals(alertText,"Thank you for your purchase!");
-        }
-        catch (Exception e) {
+            softAssert.assertEquals(alertText, "Thank you for your purchase!");
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Call assertAll to check for assertion failures
@@ -186,20 +181,18 @@ public class TC02_PurchaseProductsStepDefs {
 
 
     @And("user enters an expired credit card number")
-    public void userEntersAnexpiredCreditCardNumber()
-    {
-          placeOrderActions.UserFillSExpiredThePurchaseDetails();
+    public void userEntersAnExpiredCreditCardNumber() {
+        placeOrderActions.UserFillSExpiredThePurchaseDetails();
     }
 
     @Then("user should see an error message indicating the credit card is expired")
-    public void userSeeErrorMessageCreditCardIsExpired()
-    {
+    public void userSeeErrorMessageCreditCardExpired() {
         String expectedMessage = "Your credit card has expired.";
-        String actualMessage=placeOrderActions.ShowErrorMsg();
+        String actualMessage = placeOrderActions.ShowErrorMsg();
+
         try {
-            softAssert.assertEquals( actualMessage.contains(expectedMessage),expectedMessage,"please enter non expired credit card");
-        }
-        catch (Exception e) {
+            softAssert.assertEquals(actualMessage.contains(expectedMessage), expectedMessage, "please enter non expired credit card");
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // Call assertAll to check for assertion failures
@@ -207,4 +200,27 @@ public class TC02_PurchaseProductsStepDefs {
         }
     }
 
+    @When("user adds the first product to the cart again")
+    public void userAddsTheFirstProductToTheCartAgain() {
+        driver.get("https://demoblaze.com/");
+        addProductsActions.ClicksOnLaptopsCategories();
+        price1 = addProductsActions.clicksOnFirstProduct();
+        successMsg = addProductsActions.clicksOnAddToCartButton();
+    }
+
+    @And("the total number of products in the cart should be {int} and product updated quantity")
+    public void totalNumberOfProductsInCart(int expectedCount){
+        validateCartActions.clickOnTheCartButtonInTheHeader();
+        int rowCount=validateCartActions.getTotalProductsInCart();
+        validateCartActions.deleteProducts();
+        try {
+            softAssert.assertEquals(rowCount,expectedCount);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Call assertAll to check for assertion failures
+            softAssert.assertAll();
+        }
+
+    }
 }
